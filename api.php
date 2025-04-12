@@ -84,6 +84,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     // var_dump($incidentData);                 
                     echo json_encode($incident->createIncident($incidentData));
                     break;
+
+                case 'login':
+                    echo $incident->login($data['email'], $data['password']);
+                    break;
+
+                case 'register':
+                    $userdata = array(
+                        'username'=> $data['username'],
+                        'email' => $data['email'],
+                        'password'=> md5($data['password']),
+                        'contact'=> $data['contact'],
+                    );
+                    echo $incident->registeruser($userdata);
+                    break;
                 
                 default:
                     echo json_encode(array('status' => 'error', 'message' => 'Invalid action state here'));
