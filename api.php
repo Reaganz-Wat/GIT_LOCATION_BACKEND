@@ -86,7 +86,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     break;
 
                 case 'login':
-                    echo $incident->login($data['email'], $data['password']);
+                    echo $incident->login($data['username'], $data['password']);
+     
                     break;
 
                 case 'register':
